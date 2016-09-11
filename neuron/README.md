@@ -11,7 +11,7 @@ Neuron is the basic building block of an SNN and several interconnected neurons 
   <img src="neuron.png" width="350"/>
 </p>
 
-Above graph shows the membrane potential throughout the 50 time units (TU) as a result of input spike train. Below is the randomly generated input spike train. 
+Above graph shows the membrane potential throughout the 50 time units (TU) as a result of input spike train. Below is the corresponding randomly generated input spike train. 
 
 <p align="center">
   <img src="spikes.png" width="350"/>
