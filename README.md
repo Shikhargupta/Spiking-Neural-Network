@@ -6,7 +6,7 @@ This is the python implementation of hardware efficient spiking neural network. 
 </p>
 
 ## Network Elements
-  * [Neuron] (neuron/README.md)
+  * [Neuron] (neuron/)
   * Synapse
   * Receptive field
   * Spike train
