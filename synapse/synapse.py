@@ -48,24 +48,25 @@ class neuron:
 
 
 if __name__=='__main__':
-
-#creating two layers of 5 and 3 neurons
+	m = 5 #Number of neurons in first layer
+	n = 3 #Number of neurons in second layer
+#creating two layers of m and n neurons
 	layer1 = []
 	layer2 = []
 
-	for i in range(5):
+	for i in range(m):
 		a = neuron()
 		layer1.append(a)
-	for i in range(3):
+	for i in range(n):
 		a = neuron()
 		layer2.append(a)	
 
 #initialising synapse array with random integers
-	synapse = np.random.randint(0, 5, size=(3,5))
+	synapse = np.random.randint(0, 5, size=(n,m))
 	S_in = []
 
 #initialising the input spike trains
-	for l in range(5):
+	for l in range(m):
 		temp = []
 		for k in range(len(time)):
 			a = random.randrange(0,2)
@@ -74,9 +75,9 @@ if __name__=='__main__':
 
 #output of the first layer
 	out_l1 = []
-	w_in = np.eye(5)
+	w_in = np.eye(m)
 	S_in = np.array(S_in)
-	for l in range(5):
+	for l in range(m):
 		temp = []
 		temp = layer1[l].out(S_in,w_in[l])
 		out_l1.append(temp)
@@ -84,7 +85,7 @@ if __name__=='__main__':
 	
 #output of the second layer which was fed with the output of the first layer
 	out_l2 = []
-	for l in range(3):
+	for l in range(n):
 		temp  = []
 		temp = layer2[l].out(out_l1,synapse[l])
 		out_l2.append(temp)
