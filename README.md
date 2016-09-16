@@ -8,7 +8,7 @@ This is the python implementation of hardware efficient spiking neural network. 
 ## Network Elements
   * [Neuron] (neuron/)
   * [Synapse] (synapse/)
-  * Receptive field
+  * [Receptive field] (receptive_field/)
   * Spike train
 
 
