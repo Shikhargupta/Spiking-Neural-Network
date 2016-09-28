@@ -4,7 +4,7 @@ Input neuron layer has to be fed with the stimulus caused by its receptive field
 
 The average firing rate of retinal ganglion neurons lies between 1-200 Hz therefore the potential is scaled accordingly. Here are some examples of varying firing rates
 <p align="center">
-  <img src="/images/1.png" width="500"/>
+  <img src="/images/train.png" width="500"/>
 </p>
 <p align="center">
   <img src="/images/2.png" width="500"/>
