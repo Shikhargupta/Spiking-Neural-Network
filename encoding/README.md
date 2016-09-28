@@ -13,7 +13,7 @@ The average firing rate of retinal ganglion neurons lies between 1-200 Hz theref
   <img src="/images/3.png" width="500"/>
 </p>
 
-The image used as the input is the one from the semeion dataset of handwritten integers
+The image used as the input is the one from the [semeion dataset] (https://archive.ics.uci.edu/ml/machine-learning-databases/semeion/) of handwritten integers
 <p align="center">
   <img src="/images/test.png" width="100"/>
 </p>
