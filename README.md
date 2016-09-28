@@ -9,7 +9,7 @@ This is the python implementation of hardware efficient spiking neural network. 
   * [Neuron] (neuron/)
   * [Synapse] (synapse/)
   * [Receptive field] (receptive_field/)
-  * Spike train
+  * [Spike train] (encoding/)
 
 
 
