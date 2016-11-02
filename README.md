@@ -13,6 +13,7 @@ Spike-Time Dependent Plasticity (STDP) algorithm will be used to train the netwo
   * [Receptive field] (receptive_field/)
   * [Spike train] (encoding/)
 
+
 ## [SNN Simulator for Classification] (classification/)
 Assuming that we have learned the optimal weights of the network using the STDP algorithm (will be implemented next), this uses the weights to classify the input patterns into different classes. The simulator uses the 'winner-takes-all' strategy to supress the non firing neurons and produce distinguishable results. Steps involved while classifying the patterns are:
 
@@ -33,4 +34,4 @@ First 200 TU corresponds to class1, next 200 to class2. Red line indicates the t
 
 <img src="images/figure_1.png" width="300"/> <img src="images/figure_2.png" width="300"/> <img src="images/figure_3.png" width="300"/> <img src="images/figure_4.png" width="300"/>
 
-The 1st output neuron is active for class1, 2nd is active for class2, and 3rd and 4th are mute for both the classes. Hence, by recording the total spikes in utput neurons, we can determine the class to which the pattern belongs.
+The 1st output neuron is active for class1, 2nd is active for class2, and 3rd and 4th are mute for both the classes. Hence, by recording the total spikes in output neurons, we can determine the class to which the pattern belongs.
