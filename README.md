@@ -28,9 +28,9 @@ The simulator was tested upon binary classification. It can be extended upto any
 
 <img src="images/100.png" width="50"/>          <img src="images/101.png" width="50"/>
 
-Each of the classes were presented to the network for 500 time units each. The activity of the neurons was recorded. Here are the graphs of the potential of output neurons versus time unit.
+Each of the classes were presented to the network for 1000 time units each. The activity of the neurons was recorded. Here are the graphs of the potential of output neurons versus time unit.
 
-First 500 TU corresponds to class1, next 500 to class2. Red line indicates the threshold potential.
+First 1000 TU corresponds to class1, next 1000 to class2. Red line indicates the threshold potential.
 
 <img src="images/figure_11.png" width="300"/> <img src="images/figure_12.png" width="300"/> <img src="images/figure_13.png" width="300"/> <img src="images/figure_14.png" width="300"/>
 
