@@ -32,6 +32,6 @@ Each of the classes were presented to the network for 500 time units each. The a
 
 First 500 TU corresponds to class1, next 500 to class2. Red line indicates the threshold potential.
 
-<img src="images/figure_1.png" width="300"/> <img src="images/figure_2.png" width="300"/> <img src="images/figure_3.png" width="300"/> <img src="images/figure_4.png" width="300"/>
+<img src="images/figure_11.png" width="300"/> <img src="images/figure_12.png" width="300"/> <img src="images/figure_13.png" width="300"/> <img src="images/figure_14.png" width="300"/>
 
 The 1st output neuron is active for class1, 2nd is active for class2, and 3rd and 4th are mute for both the classes. Hence, by recording the total spikes in output neurons, we can determine the class to which the pattern belongs.
