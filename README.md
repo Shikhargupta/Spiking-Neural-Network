@@ -35,3 +35,36 @@ First 1000 TU corresponds to class1, next 1000 to class2. Red line indicates the
 <img src="images/figure_11.png" width="300"/> <img src="images/figure_12.png" width="300"/> <img src="images/figure_13.png" width="300"/> <img src="images/figure_14.png" width="300"/>
 
 The 1st output neuron is active for class1, 2nd is active for class2, and 3rd and 4th are mute for both the classes. Hence, by recording the total spikes in output neurons, we can determine the class to which the pattern belongs.
+
+
+## [Training an SNN](training)
+In the previous section we assumed that our network is trained i.e weights are learned using STDP and can be used to classify patterns. Here we'll see how STDP works and what all need to be taken care of while implementing this training algorithm.
+
+### Spike Time Dependent Plasticity
+STDP is actually a biological process used by brain to modify it's neural connections (synapses). Since the unmatched learning efficiency of brain has been appreciated since decades, this rule was incorporated in ANNs to train a neural network. Moulding of weights is based on the following two rules -
+- Any synapse that contribute to the firing of a post-synaptic neuron should be made strong i.e it's value should be increased.
+- Synapses that don't contribute to the firing of a post-synaptic neuron should be dimished i.e it's value should be decreased.
+
+Here is an explanation of how this algorithm works:
+
+Consider the scenario depicted in this figure
+
+<p align="center">
+  <img src="images/spikes.jpg" width="350"/>
+</p>
+
+Four neurons connect to a single neuron by synapse. Each pre synaptic neuron is firing at its own rate and the spikes are sent forward by the corresponding synapse. The intensity of spike translated to post synaptic neuron depends upon the strength of the connecting synapse. Now, because of the input spikes membrane potential of post synaptic neuron increases and sends out a spike after crossing the threshold. At the time when post synaptic neuron spikes, we'll monitor which all pre synaptic neurons helped it to fire. This could be done by observing which pre synaptic neurons sent out spikes before post synaptic neuron spiked. This way they helped in post synaptic spike by increasing the membrane potential and hence the corresponding synapse is strengthend. The factor by which the weight of synapse is increased is inversly proportional to the time difference between post synaptic and pre synaptic spikes given by this graph
+
+<p align="center">
+  <img src="images/stdp_curve.jpg" width="400"/>
+</p>
+
+## Generative Property of SNN
+
+## Variable Threshold
+
+## Lateral Inhibition
+
+## Training for 5 class dataset
+
+## Parameters
