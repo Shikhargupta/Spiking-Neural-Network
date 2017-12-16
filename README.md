@@ -69,7 +69,7 @@ In unsupervised learning it is very difficult to train a network where patterns 
 In neurobiology, lateral inhibition is the capacity of an excited neuron to reduce the activity of its neighbors. Lateral inhibition disables the spreading of action potentials from excited neurons to neighboring neurons in the lateral direction. This creates a contrast in stimulation that allows increased sensory perception. This propoerty is also called as Winner-Takes-All (WTA). The neuron that gets excited first inhibits (lowers down the membrane potential) of other neurons in same layer.
 
 
-## Training for 5 class dataset
+## Training for 3 class dataset
 Here are the results after training an SNN using MNIST dataset with 3 classes (0-2) with 5 output neurons. We will leverage the generative property of SNN and reconstruct the images using trained weights connected to each output neuron to see how well the network has learned each pattern. Also, we see the membrane potential versus time plots for each output neuron to see how the training process was executes and made that neuron sensitive to a particular pattern only.
 
 **Neuron1**
