@@ -4,7 +4,6 @@ import random
 from recep_field import rf
 import cv2
 from spike_train import encode
-from reconstruct import reconst
 from weight_initialization import learned_weights_x
 from weight_initialization import learned_weights_o
 
