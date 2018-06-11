@@ -1,5 +1,5 @@
 import numpy as np
-import cv2
+import imageio
 import math
 from matplotlib import pyplot as plt
 
@@ -16,8 +16,9 @@ for i in range(5):
 		d = abs(ox-i) + abs(oy-j)
 		w[i][j] = (-0.375)*d + 1
 
+print(w)
 #reading dataset image (16x16)
-img = cv2.imread('1.png', 0)
+img = imageio.imread('../images/101.png')
 
 #calculating potential map of the image (256 input neuron potential)
 for i in range(16):
@@ -51,3 +52,4 @@ for l in range(16):
 			temp[k] = 1
 			k = k + freq1
 		train.append(temp)
+print(temp)

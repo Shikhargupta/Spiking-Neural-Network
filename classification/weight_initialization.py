@@ -2,11 +2,12 @@ import numpy as np
 from neuron import neuron
 import random
 from matplotlib import pyplot as plt
-import cv2
+
+from scipy import misc
 
 def learned_weights_x():
 	ans = []
-	img = cv2.imread("images2/100.png", 0)
+	img = misc.imread("images/100.png", mode='L')
 	for i in img:
 		for j in i:
 			if(j==0):
@@ -18,7 +19,7 @@ def learned_weights_x():
 
 def learned_weights_o():
 	ans = []
-	img = cv2.imread("images2/101.png", 0)
+	img = misc.imread("images/101.png", mode='L')
 	for i in img:
 		for j in i:
 			if(j==0):
@@ -30,4 +31,4 @@ def learned_weights_o():
 
 if __name__ == '__main__':
 	a = learned_weights_x()
-	print a
+	print(a)

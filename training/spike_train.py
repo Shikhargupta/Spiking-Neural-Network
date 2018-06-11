@@ -11,7 +11,7 @@ from neuron import neuron
 import random
 from matplotlib import pyplot as plt
 from recep_field import rf
-import cv2
+import imageio
 from rl import rl
 from rl import update
 import math
@@ -32,7 +32,7 @@ def encode(pot):
 			
 			# print freq
 			if freq<=0:
-				print error
+				print(error)
 				
 			freq1 = math.ceil(600/freq)
 
@@ -49,7 +49,7 @@ def encode(pot):
 if __name__  == '__main__':
 	# m = []
 	# n = []
-	img = cv2.imread("mnist1/6/" + str(15) + ".png", 0)
+	img = imageio.imread("mnist1/6/" + str(15) + ".png")
 
 	pot = rf(img)
 
@@ -60,7 +60,7 @@ if __name__  == '__main__':
 	# print max(m), min(n)
 	train = encode(pot)
 	f = open('look_ups/train6.txt', 'w')
-	print np.shape(train)
+	print(np.shape(train))
 
 	for i in range(201):
 		for j in range(784):

@@ -8,7 +8,7 @@
 
 import numpy as np
 from numpy import interp
-import cv2
+import imageio
 from recep_field import rf
 from parameters import param as par
 
@@ -21,7 +21,7 @@ def reconst_weights(weights, num):
 		for j in range(par.pixel_x):
 			img[i][j] = int(interp(weights[i][j], [par.w_min,par.w_max], [0,255]))	
 
-	cv2.imwrite('neuron' + str(num) + '.png' ,img)
+	imageio.imwrite('neuron' + str(num) + '.png', img)
 	return img
 
 def reconst_rf(weights, num):
@@ -32,12 +32,12 @@ def reconst_rf(weights, num):
 		for j in range(par.pixel_x):
 			img[i][j] = int(interp(weights[i][j], [-2,3.625], [0,255]))	
 
-	cv2.imwrite('neuron' + str(num) + '.png' ,img)
+	imageio.imwrite('neuron' + str(num) + '.png', img)
 	return img
 
 
 if __name__ == '__main__':
 
-	img = cv2.imread("images2/" + "69" + ".png", 0)
+	img = imageio.imread("images2/" + "69" + ".png")
 	pot = rf(img)
 	reconst_rf(pot, 12)

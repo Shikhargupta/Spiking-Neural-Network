@@ -7,7 +7,7 @@
 
 
 import numpy as np
-import cv2
+import imageio
 from parameters import param as par
 
 def rf(inp):
@@ -41,12 +41,12 @@ def rf(inp):
 
 if __name__ == '__main__':
 
-	img = cv2.imread("mnist1/" + str(1) + ".png", 0)
+	img = imageio.imread("mnist1/" + str(1) + ".png")
 	pot = rf(img)
 	max_a = []
 	min_a = []
 	for i in pot:
 		max_a.append(max(i))
 		min_a.append(min(i))
-	print "max", max(max_a)
-	print "min", min(min_a)
+	print("max", max(max_a))
+	print("min", min(min_a))

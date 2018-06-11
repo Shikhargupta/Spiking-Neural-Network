@@ -1,5 +1,6 @@
 import numpy as np
-import cv2
+
+from scipy import misc
 
 def rf(inp):
 	w = [[-0.5,-0.125,  0.25,  -0.125, -0.5  ],

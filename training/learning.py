@@ -13,7 +13,7 @@ from neuron import neuron
 import random
 from matplotlib import pyplot as plt
 from recep_field import rf
-import cv2
+import imageio
 from spike_train import encode
 from rl import rl
 from rl import update
@@ -46,9 +46,9 @@ for i in range(par.n):
 
 
 for k in range(par.epoch):
-	for i in range(322,323):
-		print i,"  ",k
-		img = cv2.imread("mnist1/" + str(i) + ".png", 0)
+	for i in range(100, 102):
+		print(i,"  ",k)
+		img = imageio.imread("images/" + str(i) + ".png")
 
 		#Convolving image with receptive field
 		pot = rf(img)
@@ -98,7 +98,7 @@ for k in range(par.epoch):
 					f_spike = 1
 					winner = np.argmax(active_pot)
 					img_win = winner
-					print "winner is " + str(winner)
+					print("winner is " + str(winner))
 					for s in range(par.n):
 						if(s!=winner):
 							layer2[s].P = par.Pmin

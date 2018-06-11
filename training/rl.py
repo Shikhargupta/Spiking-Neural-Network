@@ -28,6 +28,6 @@ def update(w, del_w):
 
 if __name__ == '__main__':
 	
-	print rl(-20)*par.sigma
+	print(rl(-20)*par.sigma)
 
 	

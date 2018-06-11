@@ -4,9 +4,8 @@ from neuron import neuron
 import random
 from matplotlib import pyplot as plt
 from recep_field import rf
-import cv2
-from rl import rl
-from rl import update
+
+from scipy import misc
 import math
 def encode(pot):
 
@@ -43,15 +42,15 @@ def encode(pot):
 if __name__  == '__main__':
 	m = []
 	n = []
-	img = cv2.imread("images/" + str(511) + ".png", 0)
+	img = misc.imread("images/" + str(100) + ".png", mode='L')
 	pot = rf(img)
 	for i in pot:
 		m.append(max(i))
 		n.append(min(i))
 
-	print max(m), min(n)
+	print(max(m), min(n))
 	train = encode(pot)
 	for x in train:
-		print sum(x)
+		print(sum(x))
 
 

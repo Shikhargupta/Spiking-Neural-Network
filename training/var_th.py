@@ -10,7 +10,6 @@ from neuron import neuron
 import random
 from matplotlib import pyplot as plt
 from recep_field import rf
-import cv2
 from spike_train import encode
 from rl import rl
 from rl import update
@@ -35,7 +34,7 @@ if __name__ == '__main__':
 
 	# img = cv2.imread("mnist1/" + str(1) + ".png", 0)
 	img = np.array(Image.open("mnist1/" + str(1) + ".png", 0))
-	print img
+	print(img)
 	# pot = rf(img)
 	# train = np.array(encode(pot))
 	# print threshold(train)
