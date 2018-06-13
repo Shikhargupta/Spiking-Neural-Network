@@ -12,20 +12,23 @@ class param:
 
     #pixel_x = 28
     pixel_x = 16
-    Prest = 0
     m = pixel_x*pixel_x #Number of neurons in first layer
     n =  3  #Number of neurons in second layer
     Pmin = -500*scale
-    # Pth = 5
-    # D = 0.7
+    Pref = 0
+    Prest = 0
+    Pmin = -1
+    Pth = 5.5
+    D = 0.5
+
     w_max = 1.5*scale
     w_min = -1.2*scale
     sigma = 0.1 #0.02
     A_plus = 0.8  # time difference is positive i.e negative reinforcement
-    A_minus = 0.3 # 0.01 # time difference is negative i.e positive reinforcement 
+    A_minus = 0.3 # 0.01 # time difference is negative i.e positive reinforcement
     tau_plus = 8
     tau_minus = 5
-    
+
     epoch = 12
 
 

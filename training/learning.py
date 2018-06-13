@@ -45,9 +45,9 @@ for i in range(par.n):
 
 
 for k in range(par.epoch):
-    for i in range(100, 102):
+    for i in range(2):
         #print(i,"  ",k)
-        img = imageio.imread("images/" + str(i) + ".png")
+        img = imageio.imread("data/training/{}.png".format(i))
 
         #Convolving image with receptive field
         pot = rf(img)
@@ -147,7 +147,7 @@ for i in range(par.n):
     plt.show()
 
 
-with open('weights.txt', 'w') as weight_file:
+with open('weights_training.txt', 'w') as weight_file:
     for i in range(len(synapse)):
         weights = []
         for j in synapse[i]:

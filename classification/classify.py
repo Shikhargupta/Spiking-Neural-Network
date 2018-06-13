@@ -1,10 +1,10 @@
 import numpy as np
-from classification.neuron import neuron
+from snn.neuron import neuron
 import random
-from classification.recep_field import rf
+from snn.recep_field import rf
 from snn.spike_train import encode
-from classification.weight_initialization import learned_weights_x
-from classification.weight_initialization import learned_weights_o
+from snn.parameters import param as par
+from classification.weight_initialization import learned_weights_x, learned_weights_o
 import imageio
 
 #Parameters
@@ -32,9 +32,9 @@ synapse[0] = learned_weights_x()
 synapse[1] = learned_weights_o()
 
 #random initialization for rest of the synapses
-for i in range(2,n):
+for i in range(2, n):
     for j in range(m):
-        synapse[i][j] = random.uniform(-0.2,0.2)
+        synapse[i][j] = random.uniform(-0.5,0.5)
 
 for k in range(1):
 
@@ -42,11 +42,11 @@ for k in range(1):
         spike_count = [0,0,0,0]
 
         #read the image to be classified
-        img = imageio.imread("images/" + str(100+i) + ".png")
+        img = imageio.imread("data/test/{}.png".format(i))
 
         #initialize the potentials of output neurons
         for x in layer2:
-            x.initial()
+            x.initial(Pth)
 
         #calculate teh membrane potentials of input neurons
         pot = rf(img)
@@ -66,8 +66,8 @@ for k in range(1):
         #update potential if not in refractory period
                 if(x.t_rest<t):
                     x.P = x.P + np.dot(synapse[j], train[:,t])
-                    if(x.P>x.Prest):
-                        x.P -= x.D
+                    if(x.P>par.Prest):
+                        x.P -= par.D
                     active_pot[j] = x.P
 
             # Lateral Inhibition
