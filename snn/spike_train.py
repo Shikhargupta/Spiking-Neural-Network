@@ -7,15 +7,15 @@
 
 import numpy as np
 from numpy import interp
-from neuron import neuron
+from snn.neuron import neuron
 import random
 from matplotlib import pyplot as plt
-from recep_field import rf
+from snn.recep_field import rf
 import imageio
-from rl import rl
-from rl import update
+from snn.rl import rl
+from snn.rl import update
 import math
-from parameters import param as par
+from snn.parameters import param as par
 
 def encode(pot):
 
@@ -24,16 +24,17 @@ def encode(pot):
 
 	for l in range(par.pixel_x):
 		for m in range(par.pixel_x):
-		
+
 			temp = np.zeros([(par.T+1),])
+
 
 			#calculating firing rate proportional to the membrane potential
 			freq = interp(pot[l][m], [-1.069,2.781], [1,20])
-			
+			#print(pot[l][m], freq)
 			# print freq
 			if freq<=0:
 				print(error)
-				
+
 			freq1 = math.ceil(600/freq)
 
 			#generating spikes according to the firing rate
@@ -49,7 +50,7 @@ def encode(pot):
 if __name__  == '__main__':
 	# m = []
 	# n = []
-	img = imageio.imread("mnist1/6/" + str(15) + ".png")
+	img = imageio.imread("../images/100.png")
 
 	pot = rf(img)
 
@@ -59,11 +60,11 @@ if __name__  == '__main__':
 
 	# print max(m), min(n)
 	train = encode(pot)
-	f = open('look_ups/train6.txt', 'w')
+	f = open('train6.txt', 'w')
 	print(np.shape(train))
 
-	for i in range(201):
-		for j in range(784):
+	for j in range(len(train)):
+		for i in range(len(train[j])):
 			f.write(str(int(train[j][i])))
 		f.write('\n')
 

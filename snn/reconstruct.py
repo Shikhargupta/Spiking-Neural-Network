@@ -9,8 +9,8 @@
 import numpy as np
 from numpy import interp
 import imageio
-from recep_field import rf
-from parameters import param as par
+from snn.recep_field import rf
+from snn.parameters import param as par
 
 
 def reconst_weights(weights, num):
@@ -19,7 +19,7 @@ def reconst_weights(weights, num):
 	img = np.zeros((par.pixel_x,par.pixel_x))
 	for i in range(par.pixel_x):
 		for j in range(par.pixel_x):
-			img[i][j] = int(interp(weights[i][j], [par.w_min,par.w_max], [0,255]))	
+			img[i][j] = int(interp(weights[i][j], [par.w_min,par.w_max], [0,255]))
 
 	imageio.imwrite('neuron' + str(num) + '.png', img)
 	return img
@@ -30,7 +30,7 @@ def reconst_rf(weights, num):
 	img = np.zeros((par.pixel_x,par.pixel_x))
 	for i in range(par.pixel_x):
 		for j in range(par.pixel_x):
-			img[i][j] = int(interp(weights[i][j], [-2,3.625], [0,255]))	
+			img[i][j] = int(interp(weights[i][j], [-2,3.625], [0,255]))
 
 	imageio.imwrite('neuron' + str(num) + '.png', img)
 	return img

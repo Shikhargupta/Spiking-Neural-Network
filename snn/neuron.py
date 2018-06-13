@@ -8,7 +8,7 @@
 import numpy as np
 import random
 from matplotlib import pyplot as plt
-from parameters import param as par
+from snn.parameters import param as par
 
 class neuron:
 	def __init__(self):
@@ -18,7 +18,7 @@ class neuron:
 	def check(self):
 		if self.P>= self.Pth:
 			self.P = par.Prest
-			return 1	
+			return 1
 		elif self.P < par.Pmin:
 			self.P  = par.Prest
 			return 0

@@ -1,12 +1,11 @@
 import numpy as np
-from neuron import neuron
+from classification.neuron import neuron
 import random
-from recep_field import rf
-from spike_train import encode
-from weight_initialization import learned_weights_x
-from weight_initialization import learned_weights_o
-
-from scipy import misc
+from classification.recep_field import rf
+from snn.spike_train import encode
+from classification.weight_initialization import learned_weights_x
+from classification.weight_initialization import learned_weights_o
+import imageio
 
 #Parameters
 global time, T, dt, t_back, t_fore, w_min
@@ -25,7 +24,7 @@ for i in range(n):
     a = neuron()
     layer2.append(a)
 
-#synapse matrix    
+#synapse matrix
 synapse = np.zeros((n,m))
 
 #learned weights
@@ -41,37 +40,37 @@ for k in range(1):
 
     for i in range(2):
         spike_count = [0,0,0,0]
-    
+
         #read the image to be classified
-        img = misc.imread("images/" + str(100+i) + ".png", mode='L')
-        
+        img = imageio.imread("images/" + str(100+i) + ".png")
+
         #initialize the potentials of output neurons
         for x in layer2:
             x.initial()
-        
+
         #calculate teh membrane potentials of input neurons
         pot = rf(img)
-        
+
         #generate spike trains
         train = np.array(encode(pot))
-        
+
         #flag for lateral inhibition
         f_spike = 0
-    
+
         active_pot = [0,0,0,0]
-    
+
         for t in time:
             for j, x in enumerate(layer2):
                 active = []
-        
+
         #update potential if not in refractory period
                 if(x.t_rest<t):
                     x.P = x.P + np.dot(synapse[j], train[:,t])
                     if(x.P>x.Prest):
                         x.P -= x.D
                     active_pot[j] = x.P
-            
-            # Lateral Inhibition        
+
+            # Lateral Inhibition
             if(f_spike==0):
                 high_pot = max(active_pot)
                 if(high_pot>Pth):
@@ -80,8 +79,8 @@ for k in range(1):
                     for s in range(n):
                         if(s!=winner):
                             layer2[s].P -= Pth/2
-    
-            #Check for spikes                
+
+            #Check for spikes
             for j,x in enumerate(layer2):
                 s = x.check()
                 if(s==1):

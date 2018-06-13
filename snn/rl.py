@@ -8,11 +8,11 @@
 
 import numpy as np
 from matplotlib import pyplot as plt
-from parameters import param as par
+from snn.parameters import param as par
 
 #STDP reinforcement learning curve
 def rl(t):
-	
+
 	if t>0:
 		return -par.A_plus*np.exp(-float(t)/par.tau_plus)
 	if t<=0:
@@ -27,7 +27,6 @@ def update(w, del_w):
 		return w + par.sigma*del_w*(par.w_max-w)*par.scale
 
 if __name__ == '__main__':
-	
+
 	print(rl(-20)*par.sigma)
 
-	

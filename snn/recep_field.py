@@ -1,14 +1,14 @@
 ####################################################### README #########################################################
 
-# This file consists of function that convolves an image with a receptive field so that input to the network is 
-# close to the form perceived by our eyes. 
+# This file consists of function that convolves an image with a receptive field so that input to the network is
+# close to the form perceived by our eyes.
 
 #########################################################################################################################
 
 
 import numpy as np
 import imageio
-from parameters import param as par
+from snn.parameters import param as par
 
 def rf(inp):
 	sca1 =  0.625
@@ -35,18 +35,22 @@ def rf(inp):
 			for m in ran:
 				for n in ran:
 					if (i+m)>=0 and (i+m)<=par.pixel_x-1 and (j+n)>=0 and (j+n)<=par.pixel_x-1:
-						summ = summ + w[ox+m][oy+n]*inp[i+m][j+n]/255
+						summ = summ + w[ox+m][oy+n] * inp[i+m][j+n]/255
 			pot[i][j] = summ
-	return pot		
+	return pot
 
 if __name__ == '__main__':
-
-	img = imageio.imread("mnist1/" + str(1) + ".png")
-	pot = rf(img)
-	max_a = []
-	min_a = []
-	for i in pot:
-		max_a.append(max(i))
-		min_a.append(min(i))
-	print("max", max(max_a))
-	print("min", min(min_a))
+    img = imageio.imread("images/" + str(100) + ".png")
+    pot = rf(img)
+    max_a = []
+    min_a = []
+    for i in pot:
+        max_a.append(max(i))
+        min_a.append(min(i))
+    for i in range(16):
+        temp = ''
+        for j in pot[i]:
+            temp += '%02d ' % int(j)
+        print(temp)
+    print("max", max(max_a))
+    print("min", min(min_a))
