@@ -4,37 +4,33 @@ import random
 from snn.recep_field import rf
 from snn.spike_train import encode
 from snn.parameters import param as par
-from classification.weight_initialization import learned_weights_x, learned_weights_o
+from classification.weight_initialization import learned_weights_x, learned_weights_o, learned_weights_synapse
 import imageio
 
 #Parameters
 global time, T, dt, t_back, t_fore, w_min
 T = 200
 time  = np.arange(1, T+1, 1)
-t_back = -20
-t_fore = 20
-Pth = 5.5
-m = 256 #Number of neurons in first layer
-n = 4 #Number of neurons in second layer
 
 layer2 = []
 
 # creating the hidden layer of neurons
-for i in range(n):
+for i in range(par.n):
     a = neuron()
     layer2.append(a)
 
 #synapse matrix
-synapse = np.zeros((n,m))
+synapse = np.zeros((par.n,par.m))
 
 #learned weights
 synapse[0] = learned_weights_x()
 synapse[1] = learned_weights_o()
 
 #random initialization for rest of the synapses
-for i in range(2, n):
-    for j in range(m):
-        synapse[i][j] = random.uniform(-0.5,0.5)
+for i in range(par.n):
+    synapse[i] = learned_weights_synapse(i)
+    #for j in range(par.m):
+    #    synapse[i][j] = random.uniform(0, 0.4*par.scale)
 
 for k in range(1):
 
@@ -46,7 +42,7 @@ for k in range(1):
 
         #initialize the potentials of output neurons
         for x in layer2:
-            x.initial(Pth)
+            x.initial(par.Pth)
 
         #calculate teh membrane potentials of input neurons
         pot = rf(img)
@@ -73,12 +69,13 @@ for k in range(1):
             # Lateral Inhibition
             if(f_spike==0):
                 high_pot = max(active_pot)
-                if(high_pot>Pth):
+                if(high_pot>par.Pth):
                     f_spike = 1
                     winner = np.argmax(active_pot)
-                    for s in range(n):
+                    print(i, winner)
+                    for s in range(par.n):
                         if(s!=winner):
-                            layer2[s].P -= Pth/2
+                            layer2[s].P = par.Prest
 
             #Check for spikes
             for j,x in enumerate(layer2):

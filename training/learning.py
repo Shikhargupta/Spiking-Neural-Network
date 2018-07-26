@@ -19,6 +19,7 @@ from snn.rl import rl, update
 from snn.reconstruct import reconst_weights
 from snn.parameters import param as par
 from snn.var_th import threshold
+from classification.weight_initialization import learned_weights_synapse
 import os
 
 #potentials of output neurons
@@ -40,9 +41,15 @@ for i in range(par.n):
 synapse = np.zeros((par.n,par.m))
 
 for i in range(par.n):
-    for j in range(par.m):
-        synapse[i][j] = random.uniform(0,0.4*par.scale)
+    if False:
+        synapse[i] = learned_weights_synapse(i)
+    else:
+        for j in range(par.m):
+            synapse[i][j] = random.uniform(0,par.w_max*0.5)
 
+spike_counts = []
+for i in range(par.n):
+    spike_counts.append(0)
 
 for k in range(par.epoch):
     for i in range(2):
@@ -54,7 +61,8 @@ for k in range(par.epoch):
 
         #Generating spike train
         train = np.array(encode(pot))
-
+        if k == 0:
+            print(train.shape)
         #calculating threshold value for the image
         var_threshold = threshold(train)
 
@@ -62,9 +70,9 @@ for k in range(par.epoch):
         # synapse_act = np.zeros((par.n,par.m))
         # var_threshold = 9
         # print var_threshold
-        # var_D = (var_threshold*3)*0.07
+        #var_D = (var_threshold*3)*0.07
 
-        var_D = 0.15*par.scale
+        var_D = par.D
 
         for x in layer2:
             x.initial(var_threshold)
@@ -139,10 +147,10 @@ for i in range(len(ttt)):
 
 #plotting
 for i in range(par.n):
+    plt.figure(i)
     axes = plt.gca()
     axes.set_ylim([-20,50])
-    plt.figure(i)
-    plt.plot(ttt,Pth, 'r' )
+    plt.plot(ttt,Pth, 'r')
     plt.plot(ttt,pot_arrays[i])
     plt.show()
 
