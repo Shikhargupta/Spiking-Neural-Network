@@ -22,9 +22,9 @@ class param:
 
     w_max = 1.5*scale
     w_min = -1.2*scale
-    sigma = 0.1 #0.02
-    A_plus = 0.8  # time difference is positive i.e negative reinforcement
-    A_minus = 0.3 # 0.01 # time difference is negative i.e positive reinforcement
+    sigma = 0.02 #0.02
+    A_plus = 0.6  # time difference is positive i.e negative reinforcement
+    A_minus = 0.5 # 0.01 # time difference is negative i.e positive reinforcement
     tau_plus = 8
     tau_minus = 5
 
