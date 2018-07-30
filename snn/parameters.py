@@ -6,7 +6,7 @@
 
 class param:
     scale = 1
-    T = 200
+    T = 150
     t_back = -20
     t_fore = 20
 
@@ -28,7 +28,7 @@ class param:
     tau_plus = 10
     tau_minus = 10
 
-    epoch = 50
+    epoch = 100
 
 
     fr_bits = 12

@@ -9,8 +9,7 @@ import imageio
 
 #Parameters
 global time, T, dt, t_back, t_fore, w_min
-T = 200
-time  = np.arange(1, T+1, 1)
+time  = np.arange(1, par.T+1, 1)
 
 layer2 = []
 
