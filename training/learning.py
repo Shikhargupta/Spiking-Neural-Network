@@ -146,8 +146,8 @@ Pth = []
 for i in range(len(ttt)):
     Pth.append(layer2[0].Pth)
 
-plt.figure(0)
 #plotting
+plt.figure(0)
 for i in range(par.n):
     plt.subplot(par.n, 1, i+1)
     axes = plt.gca()
@@ -163,6 +163,20 @@ for i in range(par.n):
     axes.set_ylim([0, 1])
     vals = np.array(spike_probe[i])
     plt.stem(vals[:,0],vals[:,1])
+plt.show()
+
+plt.figure(2)
+for i in range(par.n):
+    plt.subplot(par.n/2, par.n/2, i+1)
+    plt.gca().grid(False)
+    weights = np.array(synapse[i])
+    weights = np.reshape(weights, (par.pixel_x,par.pixel_x))
+    img = np.zeros((par.pixel_x,par.pixel_x))
+    for i in range(par.pixel_x):
+        for j in range(par.pixel_x):
+            img[i][j] = np.interp(weights[i][j], [par.w_min,par.w_max], [-1.0,1.0])
+    plt.imshow(img)
+    plt.colorbar()
 plt.show()
 
 
