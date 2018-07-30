@@ -52,7 +52,7 @@ for i in range(par.n):
     spike_probe.append([(0, 0)])
 
 for k in range(par.epoch):
-    for i in range(2):
+    for i in range(3):
         #print(i,"  ",k)
         img = imageio.imread("data/training/{}.png".format(i))
 

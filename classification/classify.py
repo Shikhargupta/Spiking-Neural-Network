@@ -27,14 +27,14 @@ synapse[0] = learned_weights_x()
 synapse[1] = learned_weights_o()
 
 #random initialization for rest of the synapses
-for i in range(2, par.n):
-    #synapse[i] = learned_weights_synapse(i)
-    for j in range(par.m):
-        synapse[i][j] = random.uniform(0, 0.4*par.scale)
+for i in range(par.n):
+    synapse[i] = learned_weights_synapse(i)
+    #for j in range(par.m):
+    #    synapse[i][j] = random.uniform(0, 0.4*par.scale)
 
 for k in range(1):
 
-    for i in range(2):
+    for i in range(3):
         spike_count = [0,0,0,0]
 
         #read the image to be classified
