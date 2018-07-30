@@ -27,10 +27,10 @@ synapse[0] = learned_weights_x()
 synapse[1] = learned_weights_o()
 
 #random initialization for rest of the synapses
-for i in range(par.n):
-    synapse[i] = learned_weights_synapse(i)
-    #for j in range(par.m):
-    #    synapse[i][j] = random.uniform(0, 0.4*par.scale)
+for i in range(2, par.n):
+    #synapse[i] = learned_weights_synapse(i)
+    for j in range(par.m):
+        synapse[i][j] = random.uniform(0, 0.4*par.scale)
 
 for k in range(1):
 
@@ -81,6 +81,7 @@ for k in range(1):
             for j,x in enumerate(layer2):
                 s = x.check()
                 if(s==1):
+                    print(j, s)
                     spike_count[j] += 1
                     x.t_rest = t + x.t_ref
         print(spike_count)

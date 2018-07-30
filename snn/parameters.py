@@ -16,19 +16,19 @@ class param:
     n =  4  #Number of neurons in second layer
     Pref = 0.
     Prest = 0.
-    Pmin = -2.0*scale
-    Pth = 5.5*scale
-    D = 0.5*scale
+    Pmin = -5.0*scale
+    Pth = 50.0*scale
+    D = 0.75*scale
 
-    w_max = 1.5*scale
+    w_max = 2.0*scale
     w_min = -1.2*scale
     sigma = 0.02 #0.02
-    A_plus = 0.6  # time difference is positive i.e negative reinforcement
-    A_minus = 0.5 # 0.01 # time difference is negative i.e positive reinforcement
-    tau_plus = 8
-    tau_minus = 5
+    A_plus = 0.8  # time difference is positive i.e negative reinforcement
+    A_minus = 0.3 # 0.01 # time difference is negative i.e positive reinforcement
+    tau_plus = 10
+    tau_minus = 10
 
-    epoch = 16
+    epoch = 50
 
 
     fr_bits = 12

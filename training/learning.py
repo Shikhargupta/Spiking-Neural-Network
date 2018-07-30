@@ -47,9 +47,9 @@ for i in range(par.n):
         for j in range(par.m):
             synapse[i][j] = random.uniform(0,par.w_max*0.5)
 
-spike_counts = []
+spike_probe = []
 for i in range(par.n):
-    spike_counts.append(0)
+    spike_probe.append([(0, 0)])
 
 for k in range(par.epoch):
     for i in range(2):
@@ -75,7 +75,7 @@ for k in range(par.epoch):
         var_D = par.D
 
         for x in layer2:
-            x.initial(var_threshold)
+            x.initial(par.Pth)
 
         #flag for lateral inhibition
         f_spike = 0
@@ -101,7 +101,7 @@ for k in range(par.epoch):
             # Lateral Inhibition
             if(f_spike==0):
                 high_pot = max(active_pot)
-                if(high_pot>var_threshold):
+                if(high_pot>par.Pth):
                     f_spike = 1
                     winner = np.argmax(active_pot)
                     img_win = winner
@@ -114,6 +114,7 @@ for k in range(par.epoch):
             for j,x in enumerate(layer2):
                 s = x.check()
                 if(s==1):
+                    spike_probe[j].append((len(pot_arrays[j]), 1))
                     x.t_rest = t + x.t_ref
                     x.P = par.Prest
                     for h in range(par.m):
@@ -145,14 +146,24 @@ Pth = []
 for i in range(len(ttt)):
     Pth.append(layer2[0].Pth)
 
+plt.figure(0)
 #plotting
 for i in range(par.n):
-    plt.figure(i)
+    plt.subplot(par.n, 1, i+1)
     axes = plt.gca()
-    axes.set_ylim([-20,50])
+    axes.set_ylim([-20,60])
     plt.plot(ttt,Pth, 'r')
     plt.plot(ttt,pot_arrays[i])
-    plt.show()
+
+plt.figure(1)
+
+for i in range(par.n):
+    plt.subplot(par.n, 1, i+1)
+    axes = plt.gca()
+    axes.set_ylim([0, 1])
+    vals = np.array(spike_probe[i])
+    plt.stem(vals[:,0],vals[:,1])
+plt.show()
 
 
 with open('weights_training.txt', 'w') as weight_file:
