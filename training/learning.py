@@ -147,23 +147,23 @@ for i in range(len(ttt)):
     Pth.append(layer2[0].Pth)
 
 #plotting
-# plt.figure(0)
-# for i in range(par.n):
-#     plt.subplot(par.n, 1, i+1)
-#     axes = plt.gca()
-#     axes.set_ylim([-20,60])
-#     plt.plot(ttt,Pth, 'r')
-#     plt.plot(ttt,pot_arrays[i])
-#
-# plt.figure(1)
-#
-# for i in range(par.n):
-#     plt.subplot(par.n, 1, i+1)
-#     axes = plt.gca()
-#     axes.set_ylim([0, 1])
-#     vals = np.array(spike_probe[i])
-#     plt.stem(vals[:,0],vals[:,1])
-# plt.show()
+plt.figure(0)
+for i in range(par.n):
+    plt.subplot(par.n, 1, i+1)
+    axes = plt.gca()
+    axes.set_ylim([-20,60])
+    plt.plot(ttt,Pth, 'r')
+    plt.plot(ttt,pot_arrays[i])
+
+plt.figure(1)
+
+for i in range(par.n):
+    plt.subplot(par.n, 1, i+1)
+    axes = plt.gca()
+    axes.set_ylim([0, 1])
+    vals = np.array(spike_probe[i])
+    plt.stem(vals[:,0],vals[:,1])
+plt.show()
 
 plt.figure(2)
 for i in range(par.n):
