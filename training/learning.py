@@ -19,7 +19,6 @@ from snn.rl import rl, update
 from snn.reconstruct import reconst_weights
 from snn.parameters import param as par
 from snn.var_th import threshold
-from classification.weight_initialization import learned_weights_synapse
 import os
 
 #potentials of output neurons
@@ -41,11 +40,8 @@ for i in range(par.n):
 synapse = np.zeros((par.n,par.m))
 
 for i in range(par.n):
-    if False:
-        synapse[i] = learned_weights_synapse(i)
-    else:
-        for j in range(par.m):
-            synapse[i][j] = random.uniform(0,par.w_max*0.5)
+    for j in range(par.m):
+        synapse[i][j] = random.uniform(0,par.w_max*0.5)
 
 spike_probe = []
 for i in range(par.n):
@@ -108,7 +104,7 @@ for k in range(par.epoch):
                     print("winner is " + str(winner))
                     for s in range(par.n):
                         if(s!=winner):
-                            layer2[s].P = par.Pmin
+                            layer2[s].P = -500
 
             #Check for spikes and update weights
             for j,x in enumerate(layer2):
