@@ -65,7 +65,7 @@ def encode(pot):
             k = freq1
             if(pot[l][m]>0):
                 while k<(par.T+1):
-                    temp[k] = 1
+                    temp[int(k)] = 1
                     k = k + freq1
             train.append(temp)
             # print sum(temp)
