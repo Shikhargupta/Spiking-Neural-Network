@@ -3,7 +3,7 @@ from neuron import neuron
 import random
 from recep_field import rf
 import cv2
-from spike_train import encode
+from spike_train import encode_deterministic
 from weight_initialization import learned_weights_x
 from weight_initialization import learned_weights_o
 
@@ -24,7 +24,7 @@ for i in range(n):
 	a = neuron()
 	layer2.append(a)
 
-#synapse matrix	
+#synapse matrix
 synapse = np.zeros((n,m))
 
 #learned weights
@@ -40,37 +40,37 @@ for k in range(1):
 
 	for i in range(2):
 		spike_count = [0,0,0,0]
-    
+
 		#read the image to be classified
 		img = cv2.imread("images2/" + str(i) + ".png", 0)
-		
+
     #initialize the potentials of output neurons
     for x in layer2:
 			x.initial()
-    
+
     #calculate teh membrane potentials of input neurons
 		pot = rf(img)
-    
+
     #generate spike trains
-		train = np.array(encode(pot))
-    
+		train = np.array(encode_deterministic(pot))
+
     #flag for lateral inhibition
 		f_spike = 0
-    
+
 		active_pot = [0,0,0,0]
 
 		for t in time:
 			for j, x in enumerate(layer2):
 				active = []
-        
+
         #update potential if not in refractory period
 				if(x.t_rest<t):
 					x.P = x.P + np.dot(synapse[j], train[:,t])
 					if(x.P>x.Prest):
 						x.P -= x.D
 					active_pot[j] = x.P
-			
-			# Lateral Inhibition		
+
+			# Lateral Inhibition
 			if(f_spike==0):
 				high_pot = max(active_pot)
 				if(high_pot>Pth):
@@ -80,7 +80,7 @@ for k in range(1):
 						if(s!=winner):
 							layer2[s].P -= Pth/2
 
-			#Check for spikes				
+			#Check for spikes
 			for j,x in enumerate(layer2):
 				s = x.check()
 				if(s==1):

@@ -1,5 +1,4 @@
 import numpy as np
-import cv2
 
 def rf(inp):
 	w = [[-0.5,-0.125,  0.25,  -0.125, -0.5  ],
@@ -21,7 +20,7 @@ def rf(inp):
 					if (i+m)>=0 and (i+m)<=15 and (j+n)>=0 and (j+n)<=15:
 						summ = summ + w[ox+m][oy+n]*inp[i+m][j+n]/255
 			pot[i][j] = summ
-	return pot		
+	return pot
 
 # if __name__ == '__main__':
 
@@ -37,4 +36,4 @@ def rf(inp):
 # 			if min(c)<minn:
 # 				minn = min(c)
 
-# 	print maxx, minn				
+# 	print maxx, minn
