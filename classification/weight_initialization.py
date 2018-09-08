@@ -1,33 +1,26 @@
+################################ README ########################################
+# This file is used to initialize the network with trained weights.'image_names'
+# consists of names of the images that are needed to be read.
+################################################################################ 
+
 import numpy as np
-from neuron import neuron
-import random
-from matplotlib import pyplot as plt
-import cv2
+import imageio
 
-def learned_weights_x():
+def learned_weights():
+	image_names = ["100", "101"]
 	ans = []
-	img = cv2.imread("images2/100.png", 0)
-	for i in img:
-		for j in i:
-			if(j==0):
-				ans.append(-0.5)
-			else:
-				ans.append(1.5)
-
+	for image in image_names:
+		temp = []
+		img = imageio.imread("../images/" + image + ".png")
+		for i in img:
+			for j in i:
+				if(j==0):
+					temp.append(-0.5)
+				else:
+					temp.append(1.5)
+		ans.append(temp)
 	return ans
 
-def learned_weights_o():
-	ans = []
-	img = cv2.imread("images2/101.png", 0)
-	for i in img:
-		for j in i:
-			if(j==0):
-				ans.append(-0.5)
-			else:
-				ans.append(1.5)
-
-	return ans					
-
 if __name__ == '__main__':
-	a = learned_weights_x()
+	a = learned_weights()
 	print a
