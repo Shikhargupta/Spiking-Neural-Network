@@ -1,3 +1,12 @@
+########################### README ############################################
+# This file is used to generate spike train from potential map. There are two
+# methods to do so. One is deterministic where we calculate the spike frequency
+# directly proportional to the potential of that pixel and construct a train
+# with equally spaced spikes. Other one is stochastic where we calculate the
+# probability of the pixel to fire a spike and construct a spike train
+# accordingly
+###############################################################################
+
 import numpy as np
 from numpy import interp
 from neuron import neuron
@@ -5,6 +14,9 @@ import random
 from recep_field import rf
 import imageio
 import math
+
+def encode_stochastic(pot):
+
 
 def encode_deterministic(pot):
 	#defining time frame of 1s with steps of 5ms
