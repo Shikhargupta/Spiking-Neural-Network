@@ -1,3 +1,10 @@
+############################ README ############################################
+# This file is used to apply receptive field to the image to imitate how
+# retinal ganglion cells perceive in real world scenario. Here 'w' is the filter
+# that need to be convoluted with the image. Sophisticated python libraries for
+# convolution can be used for optimization.
+################################################################################
+
 import numpy as np
 
 def rf(inp):
@@ -11,7 +18,7 @@ def rf(inp):
 	ox = 2
 	oy = 2
 
-
+	#Convolution
 	for i in range(16):
 		for j in range(16):
 			summ = 0
