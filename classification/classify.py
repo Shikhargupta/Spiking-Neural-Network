@@ -2,10 +2,9 @@ import numpy as np
 from neuron import neuron
 import random
 from recep_field import rf
-import cv2
+import imageio
 from spike_train import encode_deterministic
-from weight_initialization import learned_weights_x
-from weight_initialization import learned_weights_o
+from weight_initialization import learned_weights
 
 #Parameters
 global time, T, dt, t_back, t_fore, w_min
@@ -13,12 +12,15 @@ T = 200
 time  = np.arange(1, T+1, 1)
 t_back = -20
 t_fore = 20
-Pth = 5.5
-m = 256 #Number of neurons in first layer
-n = 4 #Number of neurons in second layer
+Pth = 6
+m = 784 #Number of neurons in first layer
+n = 8 #Number of neurons in second layer
+epoch = 1
+num_of_images = 6
+w_max = 0.5
+w_min = -0.5
 
 layer2 = []
-
 # creating the hidden layer of neurons
 for i in range(n):
 	a = neuron()
@@ -26,26 +28,25 @@ for i in range(n):
 
 #synapse matrix
 synapse = np.zeros((n,m))
-
 #learned weights
-synapse[0] = learned_weights_x()
-synapse[1] = learned_weights_o()
+weight_matrix = learned_weights()
+for i in range (num_of_images):
+	synapse[i] = weight_matrix[i]
 
 #random initialization for rest of the synapses
-for i in range(2,n):
+for i in range(num_of_images,n):
 	for j in range(m):
-		synapse[i][j] = random.uniform(-0.2,0.2)
+		synapse[i][j] = random.uniform(w_min,w_max)
 
-for k in range(1):
-
-	for i in range(2):
-		spike_count = [0,0,0,0]
+for k in range(epoch):
+	for i in range(1,7):
+		spike_count = np.zeros((n,1))
 
 		#read the image to be classified
-		img = cv2.imread("images2/" + str(i) + ".png", 0)
+		img = imageio.imread("training_images/" + str(i) + ".png")
 
-    #initialize the potentials of output neurons
-    for x in layer2:
+    	#initialize the potentials of output neurons
+		for x in layer2:
 			x.initial()
 
     #calculate teh membrane potentials of input neurons
@@ -56,9 +57,7 @@ for k in range(1):
 
     #flag for lateral inhibition
 		f_spike = 0
-
-		active_pot = [0,0,0,0]
-
+		active_pot = np.zeros((n,1))
 		for t in time:
 			for j, x in enumerate(layer2):
 				active = []
