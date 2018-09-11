@@ -15,8 +15,7 @@ from recep_field import rf
 import imageio
 import math
 
-def encode_stochastic(pot):
-
+# def encode_stochastic(pot):
 
 def encode_deterministic(pot):
 	#defining time frame of 1s with steps of 5ms
@@ -24,8 +23,8 @@ def encode_deterministic(pot):
 	#initializing spike train
 	train = []
 
-	for l in range(16):
-		for m in range(16):
+	for l in range(28):
+		for m in range(28):
 			temp = np.zeros([(T+1),])
 			#calculating firing rate proportional to the membrane potential
 			freq = interp(pot[l][m], [-2,5], [1,20])

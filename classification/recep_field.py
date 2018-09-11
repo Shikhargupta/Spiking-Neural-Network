@@ -13,14 +13,14 @@ def rf(inp):
 	 [ 0.25   ,0.625 , 1. ,    0.625 , 0.25 ],
 	 [-0.125 , 0.25  , 0.625 , 0.25,  -0.125],
 	 [-0.5  , -0.125 , 0.25 , -0.125 ,-0.5  ]]
-	pot = np.zeros([16,16])
+	pot = np.zeros([28,28])
 	ran = [-2,-1,0,1,2]
 	ox = 2
 	oy = 2
 
 	#Convolution
-	for i in range(16):
-		for j in range(16):
+	for i in range(28):
+		for j in range(28):
 			summ = 0
 			for m in ran:
 				for n in ran:

@@ -9,7 +9,7 @@ global Pref, Pmin, Pth, D, Prest
 Pref = 0
 Prest = 0
 Pmin = -1
-Pth = 5.5
+Pth = 6
 D = 0.5
 
 class neuron:
