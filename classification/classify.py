@@ -77,7 +77,7 @@ for k in range(epoch):
 					winner = np.argmax(active_pot)
 					for s in range(n):
 						if(s!=winner):
-							layer2[s].P -= Pth/2
+							layer2[s].P = layer2[s].Pmin
 
 			#Check for spikes
 			for j,x in enumerate(layer2):

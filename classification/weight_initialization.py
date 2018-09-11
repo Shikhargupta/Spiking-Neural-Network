@@ -15,9 +15,9 @@ def learned_weights():
 		for i in img:
 			for j in i:
 				if(j==0):
-					temp.append(-0.5)
+					temp.append(-0.7)
 				else:
-					temp.append(1.5)
+					temp.append(1)
 		ans.append(temp)
 	return ans
 
