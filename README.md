@@ -42,7 +42,7 @@ Further, to demonstrate the results for multi-class classification, the simulato
 
 Each image represents a class and to each class a neuron is delegated. 2 neurons are assigned random weights. Here are the responses of each neuron to all the classes presented. Red bar represents the class for which it spiked the most.
 
-<img src="images/classify_neurons/1.JPG" width="150"/> <img src="images/classify_neurons/2.JPG" width="150"/> <img src="images/classify_neurons/3.JPG" width="300"/> <img src="images/classify_neurons/4.JPG" width="100"/> <img src="images/classify_neurons/5.JPG" width="100"/> <img src="images/classify_neurons/6.JPG" width="200"/> <img src="images/classify_neurons/7.JPG" width="200"/> <img src="images/classify_neurons/8.JPG" width="250"/>
+<img src="images/classify_neurons/1.JPG" width="250"/> <img src="images/classify_neurons/2.JPG" width="250"/> <img src="images/classify_neurons/3.JPG" width="250"/> <img src="images/classify_neurons/4.JPG" width="250"/> <img src="images/classify_neurons/5.JPG" width="250"/> <img src="images/classify_neurons/6.JPG" width="250"/> <img src="images/classify_neurons/7.JPG" width="250"/> <img src="images/classify_neurons/8.JPG" width="250"/>
 
 ## [Training an SNN](training)
 In the previous section we assumed that our network is trained i.e weights are learned using STDP and can be used to classify patterns. Here we'll see how STDP works and what all need to be taken care of while implementing this training algorithm.
