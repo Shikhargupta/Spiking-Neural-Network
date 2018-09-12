@@ -40,7 +40,7 @@ Further, to demonstrate the results for multi-class classification, the simulato
 
 <img src="classification/training_images/1.png" width="50"/> <img src="classification/training_images/2.png" width="50"/> <img src="classification/training_images/3.png" width="50"/> <img src="classification/training_images/4.png" width="50"/> <img src="classification/training_images/5.png" width="50"/> <img src="classification/training_images/6.png" width="50"/>
 
-Each image represents a class and to each class a neuron is delegated. 2 neurons are assigned random weights. Here are the responses of each neuron to all the classes presented. Red bar represents the class for which it spiked the most.
+Each image represents a class and to each class a neuron is delegated. 2 neurons are assigned random weights. Here are the responses of each neuron to all the classes presented. X axis is the class number and Y axis is the number of spikes during each simulation. Red bar represents the class for which it spiked the most.
 
 <img src="images/classify_neurons/1.JPG" width="250"/> <img src="images/classify_neurons/2.JPG" width="250"/> <img src="images/classify_neurons/3.JPG" width="250"/> <img src="images/classify_neurons/4.JPG" width="250"/> <img src="images/classify_neurons/5.JPG" width="250"/> <img src="images/classify_neurons/6.JPG" width="250"/> <img src="images/classify_neurons/7.JPG" width="250"/> <img src="images/classify_neurons/8.JPG" width="250"/>
 
