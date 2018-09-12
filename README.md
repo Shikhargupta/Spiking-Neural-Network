@@ -36,6 +36,13 @@ First 1000 TU corresponds to class1, next 1000 to class2. Red line indicates the
 
 The 1st output neuron is active for class1, 2nd is active for class2, and 3rd and 4th are mute for both the classes. Hence, by recording the total spikes in output neurons, we can determine the class to which the pattern belongs.
 
+Further, to demonstrate the results for multi-class classification, the simulator was tested upon the following 6 images (MNIST dataset).
+
+<img src="classification/training_images/1.png" width="300"/> <img src="classification/training_images/2.png" width="300"/> <img src="classification/training_images/3.png" width="300"/> <img src="classification/training_images/4.png" width="300"/> <img src="classification/training_images/5.png" width="300"/> <img src="classification/training_images/6.png" width="300"/>
+
+Each image represents a class and to each class a neuron is delegated. 2 neurons are assigned random weights. Here are the responses of each neuron to all the classes presented. Red bar represents the class for which it spiked the most.
+
+<img src="images/classify_neurons/1.jpeg" width="300"/> <img src="images/classify_neurons/2.jpeg" width="300"/> <img src="images/classify_neurons/3.jpeg" width="300"/> <img src="images/classify_neurons/4.jpeg" width="300"/> <img src="images/classify_neurons/5.jpeg" width="300"/> <img src="images/classify_neurons/6.jpeg" width="300"/> <img src="images/classify_neurons/7.jpeg" width="300"/> <img src="images/classify_neurons/8.jpeg" width="300"/>
 
 ## [Training an SNN](training)
 In the previous section we assumed that our network is trained i.e weights are learned using STDP and can be used to classify patterns. Here we'll see how STDP works and what all need to be taken care of while implementing this training algorithm.
