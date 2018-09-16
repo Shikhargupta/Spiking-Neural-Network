@@ -8,7 +8,7 @@ from neuron import neuron
 import random
 from recep_field import rf
 import imageio
-from spike_train import encode_deterministic
+from spike_train import *
 from weight_initialization import learned_weights
 
 #Parameters
@@ -17,7 +17,7 @@ T = 200
 time  = np.arange(1, T+1, 1)
 t_back = -20
 t_fore = 20
-Pth = 6
+Pth = 150 #Should be Pth = 6 for deterministic spike train
 m = 784 #Number of neurons in first layer
 n = 8 #Number of neurons in second layer
 epoch = 1
@@ -57,8 +57,9 @@ for k in range(epoch):
     #calculate teh membrane potentials of input neurons
 		pot = rf(img)
 
-    #generate spike trains
-		train = np.array(encode_deterministic(pot))
+    #generate spike trains. Select between deterministic and stochastic
+		# train = np.array(encode_deterministic(pot))
+		train = np.array(encode_stochastic(img))
 
     #flag for lateral inhibition
 		f_spike = 0
