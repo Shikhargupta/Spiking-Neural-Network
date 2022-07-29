@@ -1,5 +1,5 @@
 # Spiking-Neural-Network
-This is the python implementation of hardware efficient spiking neural network. It includes the modified learning and prediction rules which could be realised on hardware and are enegry efficient. Aim is to develop a network which could be used for on-chip learning as well as prediction.
+This is the python implementation of hardware efficient spiking neural network. It includes the modified learning and prediction rules which could be realised on hardware and are energy efficient. The aim is to develop a network which could be used for on-chip learning as well as prediction.
 
 Spike-Time Dependent Plasticity (STDP) algorithm will be used to train the network.
 
@@ -15,11 +15,11 @@ Spike-Time Dependent Plasticity (STDP) algorithm will be used to train the netwo
 
 
 ## [SNN Simulator for Classification](classification/)
-Assuming that we have learned the optimal weights of the network using the STDP algorithm (will be implemented next), this uses the weights to classify the input patterns into different classes. The simulator uses the 'winner-takes-all' strategy to supress the non firing neurons and produce distinguishable results. Steps involved while classifying the patterns are:
+Assuming that we have learned the optimal weights of the network using the STDP algorithm (will be implemented next), this uses the weights to classify the input patterns into different classes. The simulator uses the 'winner-takes-all' strategy to suppress the non firing neurons and produce distinguishable results. Steps involved while classifying the patterns are:
 
 - For each input neuron membrane potential is calculated in its [receptive field](receptive_field/) (5x5 window).
 - [Spike train](encoding/) is generated for each input neuron with spike frequency proportional to the membrane potential.
-- Foe each image, at each time step, potential of the neuron is updated according to the input spike and the weights associated.
+- For each image, at each time step, the potential of the neuron is updated according to the input spike and the weights associated.
 - First firing output neuron performs lateral inhibition on the rest of the output neurons. 
 - Simulator checks for output spike.
 
